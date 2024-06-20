@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Customer Segmentation App</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Customer Segmentation App</h1>
+    <form method="POST" action="/">
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.feature1.label }}<br />
+        {{ form.feature1(size=32) }}
+      </div>
+      <div>
+        {{ form.feature2.label }}<br />
+        {{ form.feature2(size=32) }}
+      </div>
+      <div>{{ form.submit() }}</div>
+    </form>
+
+    {% if prediction is not none %}
+    <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+
+    <h2>Customer Segmentation Plot</h2>
+    <img
+      src="{{ url_for('static', filename='customer_segmentation.png') }}"
+      alt="Customer Segmentation Plot"
+    />
+  </body>
+</html>
